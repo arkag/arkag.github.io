@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'Alex Kagno'
 SITENAME = 'Digital Native ARKives'
-SITEURL = ''
+SITEURL = 'https://kagno.org'
 
 PATH = 'content'
 
