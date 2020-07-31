@@ -29,4 +29,4 @@ after_script:
 - echo "kagno.org" > CNAME
 - git add CNAME
 - git commit -m "added CNAME"
-- git push
+- git push origin master
