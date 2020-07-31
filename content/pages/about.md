@@ -1,4 +1,4 @@
-Title: About Me
+Title: About
 Date: 2020-07-30 
 Slug: about 
 Authors: Alex Kagno 

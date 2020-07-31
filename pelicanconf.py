@@ -17,13 +17,12 @@ PYGMENTS_STYLE = 'monokai'
 SITESUBTITLE = 'Rambling about whatever I want'
 
 # Blogroll
-# LINKS = (('Pelican', 'http://getpelican.com/'),
-#          ('Python.org', 'http://python.org/'),
-#          ('Jinja2', 'http://jinja.pocoo.org/'))
+LINKS = (('LinkedIn', 'https://www.linkedin.com/in/arkagno/'),
+         ('GitHub', 'https://github.com/arkag'),)
 
 # Social widget
-SOCIAL = (('LinkedIn', 'https://www.linkedin.com/in/arkagno/'),
-          ('GitHub', 'https://github.com/arkag'),)
+SOCIAL = (('', ''),
+          ('', ''),)
 
 DEFAULT_PAGINATION = False
 
