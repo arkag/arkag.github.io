@@ -26,7 +26,7 @@ script:
 - make github
 after_script:
 - git checkout master
-- echo "kagno.org" > CNAME
+- echo "$CNAME_DOMAIN" > CNAME
 - git add CNAME
 - git commit -m "added CNAME"
 - git push origin master
