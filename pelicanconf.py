@@ -14,6 +14,7 @@ DEFAULT_LANG = 'en'
 
 THEME = 'themes/pelican-alchemy/alchemy'
 PYGMENTS_STYLE = 'monokai'
+BOOTSTRAP_CSS = 'https://bootswatch.com/4/darkly/bootstrap.min.css'
 SITESUBTITLE = 'Rambling about whatever I want'
 
 # Blogroll
