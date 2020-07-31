@@ -1,6 +1,5 @@
 Title: Github Pages and Pelican
 Date: 2020-07-31 12:34
-<!-- Modified:  -->
 Category: DevOps
 Tags: pelican, travis-ci, github-pages
 Slug: github-pages-and-pelican
