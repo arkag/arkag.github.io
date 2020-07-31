@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Digital Native ARKives - Alex Kagno</title><link>https://kagno.org/</link><description>Rambling about whatever I want</description><lastBuildDate>Fri, 31 Jul 2020 12:34:00 -0600</lastBuildDate><item><title>Github Pages and Pelican</title><link>https://kagno.org/github-pages-and-pelican.html</link><description>&lt;!-- Modified:  --&gt;
+
+&lt;p&gt;Category: DevOps
+Tags: pelican, travis-ci, github-pages
+Slug: github-pages-and-pelican
+Authors: Alex Kagno
+Summary: How to use Travis CI to publish a Pelican site automatically to Github Pages&lt;/p&gt;
+&lt;p&gt;A better write-up coming soon. I just want to test my CI/CD pipeline right now.&lt;/p&gt;
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://humberto.io/blog/publishing-at-github-pages-with-pelican-and-travis-ci/"&gt;Primary documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/nairobilug/pelican-alchemy"&gt;Pelican Alchemy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.getpelican.com/en/stable/"&gt;Pelican documenation&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Alex Kagno</dc:creator><pubDate>Fri, 31 Jul 2020 12:34:00 -0600</pubDate><guid isPermaLink="false">tag:kagno.org,2020-07-31:/github-pages-and-pelican.html</guid><category>misc</category></item></channel></rss>
