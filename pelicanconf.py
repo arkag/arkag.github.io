@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
-import bulrush
 
 AUTHOR = 'Alex Kagno'
 SITENAME = 'Digital Native ARKives'
@@ -13,28 +12,18 @@ TIMEZONE = 'America/Denver'
 
 DEFAULT_LANG = 'en'
 
-# Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
-TRANSLATION_FEED_ATOM = None
-AUTHOR_FEED_ATOM = None
-AUTHOR_FEED_RSS = None
-
-THEME = bulrush.PATH
-JINJA_ENVIRONMENT = bulrush.ENVIRONMENT
-JINJA_FILTERS = bulrush.FILTERS
-
-PLUGINS = ['assets']
+THEME = 'themes/pelican-alchemy/alchemy'
+PYGMENTS_STYLE = 'monokai'
+SITESUBTITLE = 'Rambling about whatever I want'
 
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+# LINKS = (('Pelican', 'http://getpelican.com/'),
+#          ('Python.org', 'http://python.org/'),
+#          ('Jinja2', 'http://jinja.pocoo.org/'))
 
 # Social widget
-# SOCIAL = (('You can add links in your config file', '#'),
-#           ('Another social link', '#'),)
+SOCIAL = (('LinkedIn', 'https://www.linkedin.com/in/arkagno/'),
+          ('GitHub', 'https://github.com/arkag'),)
 
 DEFAULT_PAGINATION = False
 
