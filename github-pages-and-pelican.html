@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>  Github Pages, Travis CI, and Pelican | Digital Native ARKives
+</title>
+  <link rel="canonical" href="https://kagno.org/github-pages-and-pelican.html">
+
+
+  <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
+  <link rel="stylesheet" href="https://kagno.org/theme/css/fontawesome.min.css">
+  <link rel="stylesheet" href="https://kagno.org/theme/css/pygments/monokai.min.css">
+  <link rel="stylesheet" href="https://kagno.org/theme/css/theme.css">
+
+  <link rel="alternate" type="application/atom+xml" title="Full Atom Feed"
+        href="https://kagno.org/feeds/all.atom.xml">
+  <link rel="alternate" type="application/atom+xml" title="Categories Atom Feed"
+        href="https://kagno.org/feeds/devops.atom.xml">  
+  <meta name="description" content="How to use Travis CI to publish a Pelican site automatically to Github Pages">
+
+
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+<div class="row">
+  <div class="col-sm-12">
+    <h1 class="title"><a href="https://kagno.org/">Digital Native ARKives</a></h1>
+      <p class="text-muted">Rambling about whatever I want</p>
+      <ul class="list-inline">
+          <li class="list-inline-item"><a href="https://www.linkedin.com/in/arkagno/" target="_blank">LinkedIn</a></li>
+          <li class="list-inline-item"><a href="https://github.com/arkag" target="_blank">GitHub</a></li>
+              <li class="list-inline-item text-muted">|</li>
+            <li class="list-inline-item"><a href="https://kagno.org/pages/about.html">About</a></li>
+            <li class="list-inline-item"><a href="https://kagno.org/pages/resume.html">Resume</a></li>
+      </ul>
+  </div>
+</div>    </div>
+  </header>
+
+  <div class="main">
+    <div class="container">
+      <h1>  Github Pages, Travis CI, and Pelican
+</h1>
+      <hr>
+  <article class="article">
+    <header>
+      <ul class="list-inline">
+        <li class="list-inline-item text-muted" title="2020-08-04T22:14:00-06:00">
+          <i class="fas fa-clock"></i>
+          Tue 04 August 2020
+        </li>
+        <li class="list-inline-item">
+          <i class="fas fa-folder-open"></i>
+          <a href="https://kagno.org/category/devops.html">DevOps</a>
+        </li>
+          <li class="list-inline-item">
+            <i class="fas fa-user"></i>
+              <a href="https://kagno.org/author/alex-kagno.html">Alex Kagno</a>          </li>
+          <li class="list-inline-item">
+            <i class="fas fa-tag"></i>
+              <a href="https://kagno.org/tag/pelican.html">#pelican</a>,               <a href="https://kagno.org/tag/travis-ci.html">#travis-ci</a>,               <a href="https://kagno.org/tag/github-pages.html">#github-pages</a>          </li>
+      </ul>
+    </header>
+    <div class="content">
+      <h2>Intro</h2>
+<p>Much of this project is based off of Humberto's blog post linked in the <a href="#references">references</a> below. Basically, I wanted a cheap(free) way of hosting a simple website for anything I might want to host. In addition to this, I wanted it to be at least mildly personalized website that wasn't one of the 5 avilable Github Pages themes. I prefer Python over Ruby anyway, and would like to get more experience with using it for things other than scripting, so here we are!</p>
+<p>For reference, I did this on MacOS Catalina with Homebrew installed.</p>
+<h2>Github Setup</h2>
+<p>First, you'll want to create a Github Pages repo. For your personal site, there doesn't seem to be a way to serve off of any other branch than <code>master</code>. Start by creating a different default branch for the repo. I'm doing this prior to going into Github and setting it up there, and I used <code>pelican</code> for my default repo.</p>
+<p>Install Pelican, Markdown, and ghp-import: <code>pip3 install pelican markdown ghp-import</code></p>
+<p>Repository setup:</p>
+<div class="highlight"><pre><span></span><code>cd<span class="p">;</span> mkdir git<span class="p">;</span> <span class="nb">cd</span> git
+mkdir username.github.io
+<span class="nb">cd</span> username.github.io
+pelican-quickstart
+</code></pre></div>
+
+
+<p>Answer the prompts as you want, until you get a <code>tasks.py</code> question. Answer yes and then answer no to the subsequent prompts until you get a question about Github Pages. Answer yes to this one(obviously).</p>
+<p>Now you've got a site(kinda)!</p>
+<p>My next step was to set up a <code>requirements.txt</code>, which we'll need for the TravisCI set up.</p>
+<div class="highlight"><pre><span></span><code><span class="err">pelican</span>
+<span class="err">markdown</span>
+<span class="err">ghp-import</span>
+</code></pre></div>
+
+
+<p>After that, I wanted to get some information pages established. Specifically, I made a <code>resume.md</code> and <code>about.md</code> page. I put those pages in <code>content/pages/</code> which is where they will be parsed and built.</p>
+<p>Any content you write will need to go into <code>content/</code>.</p>
+<p>Okay, so now that you have some content, you'll want to build this manually. First, make sure you've commited your new content to Github repo:</p>
+<div class="highlight"><pre><span></span><code>git add .
+git commit -m <span class="s2">&quot;initial commit&quot;</span>
+git push -u origin pelican
+</code></pre></div>
+
+
+<p>Then, within the root of your Github site, run <code>ghp-import</code>. This will build your website and then force the build site into the <code>master</code> branch on your repo, this is why we're storing the source files in another repo.</p>
+<p>Now, you should be able navigate to <code>username.github.io</code> and see your (unoriginal) personal site! For customization, I'll leave that up to you. I don't want to document my setup because it's likely to change and I don't think it'll matter if that part is documented in the long run. If anything, that'll be a separate blog.</p>
+<h2>Travis CI Setup</h2>
+<p>Now that you have a site that works, let's focus on getting Travis CI set up and configured to build your website automatically whenever you push to your source branch. This means you can update your website from Github without needing access to a build machine! </p>
+<p>Log into <a href="https://travis-ci.org">Travis CI</a> with your Github account and connect your repo to it. There's plenty of documentation surrounding this specifically, so I don't want to put it here where it can get out of date.</p>
+<p>Before Travis CI can manage pushes to your repo, which is how <code>ghp-import</code> works, you'll need to create a new SSH key which Travis CI will integrate pretty easily into the repo.</p>
+<p>First, install the Travis CI CLI tool, here it is for MacOS, I trust you can find it for your platform of choice:</p>
+<div class="highlight"><pre><span></span><code>brew install travis
+</code></pre></div>
+
+
+<p>Then, you'll want to create a new SSH key in the root of your <code>pelican</code> branch repo directory (no password):</p>
+<div class="highlight"><pre><span></span><code>ssh-keygen -f publish-key
+</code></pre></div>
+
+
+<p>Finally, you'll use <code>travis</code> to encrypt and store the key within Travis CI, allowing your build containers to push your built site:</p>
+<div class="highlight"><pre><span></span><code>travis encrypt-file publish-key
+</code></pre></div>
+
+
+<p>(also, don't forget to do some clean up!):</p>
+<div class="highlight"><pre><span></span><code>rm publish-key publish-key.pub
+</code></pre></div>
+
+
+<p>Now that that's set up, let's get your <code>.travis.yml</code> committed, please read the comments:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">sudo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">branches</span><span class="p">:</span>
+  <span class="nt">only</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pelican</span>
+<span class="nt">language</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python</span>
+<span class="nt">before_install</span><span class="p">:</span>
+<span class="c1"># change the line bellow with the output of the command: travis encrypt-file publish-key but keep the final part: -out ~/.ssh/publish-key -d</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">openssl aes-256-cbc -K $encrypted_120135e51708_key -iv $encrypted_120135e51708_iv -in publish-key.enc -out ~/.ssh/publish-key -d</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">chmod u=rw,og= ~/.ssh/publish-key</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">echo &quot;Host github.com&quot; &gt;&gt; ~/.ssh/config</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">echo &quot;  IdentityFile ~/.ssh/publish-key&quot; &gt;&gt; ~/.ssh/config</span>
+<span class="c1"># replace username/username with your username</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git remote set-url origin git@github.com:username/username.github.io.git</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git fetch origin -f master:master</span>
+<span class="nt">install</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pip install --upgrade pip</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
+<span class="nt">script</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">make github</span>
+<span class="nt">after_script</span><span class="p">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git checkout master</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">echo &quot;$CNAME_DOMAIN&quot; &gt; CNAME</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git add CNAME</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git commit -m &quot;added CNAME&quot;</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git push origin master</span>
+</code></pre></div>
+
+
+<p>Everything from before <code>after_script:</code> is from Humberto's post linked in the <a href="#references">references</a> section. The <code>after_script</code> section is what I use to ensure my CNAME persists across <code>ghp-import</code> pushes because I use a custom domain like a cool kid. If you don't need it, scrap the whole section, otherwise set the <code>CNAME_DOMAIN</code> in your Travis CI environment variables (Settings &gt; Environment Variables).</p>
+<p>Throw the above YAML into that file and commit both this and the encrypted SSL file to your repo:</p>
+<div class="highlight"><pre><span></span><code>git add .
+git commit -m <span class="s2">&quot;travis files&quot;</span>
+git push origin
+</code></pre></div>
+
+
+<p>After that commit, your Travis CI pipeline should kick in and start building you site automatically!</p>
+<h2>Conclusion</h2>
+<p>I hope you enjoyed reading through the set up of my website, and my first blog post. I expect most of what I post here will be pseudo-documentation for what I work on randomly in my personal time.</p>
+<p>Thanks for stopping by!</p>
+<h2>References</h2>
+<ol>
+<li><a href="https://humberto.io/blog/publishing-at-github-pages-with-pelican-and-travis-ci/">Primary documentation</a></li>
+<li><a href="https://docs.getpelican.com/en/stable/">Pelican documenation</a></li>
+</ol>
+    </div>
+  </article>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+<div class="row">
+  <ul class="col-sm-6 list-inline">
+      <li class="list-inline-item"><a href="https://kagno.org/authors.html">Authors</a></li>
+    <li class="list-inline-item"><a href="https://kagno.org/archives.html">Archives</a></li>
+    <li class="list-inline-item"><a href="https://kagno.org/categories.html">Categories</a></li>
+      <li class="list-inline-item"><a href="https://kagno.org/tags.html">Tags</a></li>
+  </ul>
+  <p class="col-sm-6 text-sm-right text-muted">
+    Generated by <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a>
+    / <a href="https://github.com/nairobilug/pelican-alchemy" target="_blank">&#x2728;</a>
+  </p>
+</div>    </div>
+  </footer>
+
+</body>
+
+</html>
