@@ -2,7 +2,7 @@ Title: Github Pages, Travis CI, and Pelican
 Date: 2020-08-04 22:14
 Category: DevOps
 Tags: pelican, travis-ci, github-pages
-Slug: github-pages-and-pelican
+Slug: ghpages-travisci-and-pelican
 Authors: Alex Kagno
 Summary: How to use Travis CI to publish a Pelican site automatically to Github Pages
 
