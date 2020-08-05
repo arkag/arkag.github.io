@@ -1,3 +1,3 @@
-pelican==4.2
+pelican
 markdown
 ghp-import
