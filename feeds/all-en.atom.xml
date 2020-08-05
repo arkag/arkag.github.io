@@ -1,8 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Digital Native ARKives</title><link href="https://kagno.org/" rel="alternate"></link><link href="https://kagno.org/feeds/all-en.atom.xml" rel="self"></link><id>https://kagno.org/</id><updated>2020-07-31T12:34:00-06:00</updated><subtitle>Rambling about whatever I want</subtitle><entry><title>Github Pages and Pelican</title><link href="https://kagno.org/github-pages-and-pelican.html" rel="alternate"></link><published>2020-07-31T12:34:00-06:00</published><updated>2020-07-31T12:34:00-06:00</updated><author><name>Alex Kagno</name></author><id>tag:kagno.org,2020-07-31:/github-pages-and-pelican.html</id><summary type="html">&lt;p&gt;How to use Travis CI to publish a Pelican site automatically to Github Pages&lt;/p&gt;</summary><content type="html">&lt;p&gt;A better write-up coming soon. I just want to test my CI/CD pipeline right now.&lt;/p&gt;
-&lt;h3&gt;References&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Digital Native ARKives</title><link href="https://kagno.org/" rel="alternate"></link><link href="https://kagno.org/feeds/all-en.atom.xml" rel="self"></link><id>https://kagno.org/</id><updated>2020-08-04T22:14:00-06:00</updated><subtitle>Rambling about whatever I want</subtitle><entry><title>Github Pages, Travis CI, and Pelican</title><link href="https://kagno.org/github-pages-and-pelican.html" rel="alternate"></link><published>2020-08-04T22:14:00-06:00</published><updated>2020-08-04T22:14:00-06:00</updated><author><name>Alex Kagno</name></author><id>tag:kagno.org,2020-08-04:/github-pages-and-pelican.html</id><summary type="html">&lt;p&gt;How to use Travis CI to publish a Pelican site automatically to Github Pages&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Intro&lt;/h2&gt;
+&lt;p&gt;Much of this project is based off of Humberto's blog post linked in the &lt;a href="#references"&gt;references&lt;/a&gt; below. Basically, I wanted a cheap(free) way of hosting a simple website for anything I might want to host. In addition to this, I wanted it to be at least mildly personalized website that wasn't one of the 5 avilable Github Pages themes. I prefer Python over Ruby anyway, and would like to get more experience with using it for things other than scripting, so here we are!&lt;/p&gt;
+&lt;p&gt;For reference, I did this on MacOS Catalina with Homebrew installed.&lt;/p&gt;
+&lt;h2&gt;Github Setup&lt;/h2&gt;
+&lt;p&gt;First, you'll want to create a Github Pages repo. For your personal site, there doesn't seem to be a way to serve off of any other branch than &lt;code&gt;master&lt;/code&gt;. Start by creating a different default branch for the repo. I'm doing this prior to going into Github and setting it up there, and I used &lt;code&gt;pelican&lt;/code&gt; for my default repo.&lt;/p&gt;
+&lt;p&gt;Install Pelican, Markdown, and ghp-import: &lt;code&gt;pip3 install pelican markdown ghp-import&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Repository setup:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cd&lt;span class="p"&gt;;&lt;/span&gt; mkdir git&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; git
+mkdir username.github.io
+&lt;span class="nb"&gt;cd&lt;/span&gt; username.github.io
+pelican-quickstart
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Answer the prompts as you want, until you get a &lt;code&gt;tasks.py&lt;/code&gt; question. Answer yes and then answer no to the subsequent prompts until you get a question about Github Pages. Answer yes to this one(obviously).&lt;/p&gt;
+&lt;p&gt;Now you've got a site(kinda)!&lt;/p&gt;
+&lt;p&gt;My next step was to set up a &lt;code&gt;requirements.txt&lt;/code&gt;, which we'll need for the TravisCI set up.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;pelican&lt;/span&gt;
+&lt;span class="err"&gt;markdown&lt;/span&gt;
+&lt;span class="err"&gt;ghp-import&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After that, I wanted to get some information pages established. Specifically, I made a &lt;code&gt;resume.md&lt;/code&gt; and &lt;code&gt;about.md&lt;/code&gt; page. I put those pages in &lt;code&gt;content/pages/&lt;/code&gt; which is where they will be parsed and built.&lt;/p&gt;
+&lt;p&gt;Any content you write will need to go into &lt;code&gt;content/&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Okay, so now that you have some content, you'll want to build this manually. First, make sure you've commited your new content to Github repo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git add .
+git commit -m &lt;span class="s2"&gt;&amp;quot;initial commit&amp;quot;&lt;/span&gt;
+git push -u origin pelican
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then, within the root of your Github site, run &lt;code&gt;ghp-import&lt;/code&gt;. This will build your website and then force the build site into the &lt;code&gt;master&lt;/code&gt; branch on your repo, this is why we're storing the source files in another repo.&lt;/p&gt;
+&lt;p&gt;Now, you should be able navigate to &lt;code&gt;username.github.io&lt;/code&gt; and see your (unoriginal) personal site! For customization, I'll leave that up to you. I don't want to document my setup because it's likely to change and I don't think it'll matter if that part is documented in the long run. If anything, that'll be a separate blog.&lt;/p&gt;
+&lt;h2&gt;Travis CI Setup&lt;/h2&gt;
+&lt;p&gt;Now that you have a site that works, let's focus on getting Travis CI set up and configured to build your website automatically whenever you push to your source branch. This means you can update your website from Github without needing access to a build machine! &lt;/p&gt;
+&lt;p&gt;Log into &lt;a href="https://travis-ci.org"&gt;Travis CI&lt;/a&gt; with your Github account and connect your repo to it. There's plenty of documentation surrounding this specifically, so I don't want to put it here where it can get out of date.&lt;/p&gt;
+&lt;p&gt;Before Travis CI can manage pushes to your repo, which is how &lt;code&gt;ghp-import&lt;/code&gt; works, you'll need to create a new SSH key which Travis CI will integrate pretty easily into the repo.&lt;/p&gt;
+&lt;p&gt;First, install the Travis CI CLI tool, here it is for MacOS, I trust you can find it for your platform of choice:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;brew install travis
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then, you'll want to create a new SSH key in the root of your &lt;code&gt;pelican&lt;/code&gt; branch repo directory (no password):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ssh-keygen -f publish-key
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Finally, you'll use &lt;code&gt;travis&lt;/code&gt; to encrypt and store the key within Travis CI, allowing your build containers to push your built site:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;travis encrypt-file publish-key
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;(also, don't forget to do some clean up!):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;rm publish-key publish-key.pub
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now that that's set up, let's get your &lt;code&gt;.travis.yml&lt;/code&gt; committed, replacing the &lt;code&gt;openssl&lt;/code&gt; bit with your own output from the &lt;code&gt;travis&lt;/code&gt; command above:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;sudo&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;false&lt;/span&gt;
+&lt;span class="nt"&gt;branches&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="nt"&gt;only&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;pelican&lt;/span&gt;
+&lt;span class="nt"&gt;language&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;python&lt;/span&gt;
+&lt;span class="nt"&gt;before_install&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="c1"&gt;# change the line bellow with the output of the command:&lt;/span&gt;
+&lt;span class="c1"&gt;# travis encrypt-file publish-key&lt;/span&gt;
+&lt;span class="c1"&gt;# but keep the final part:&lt;/span&gt;
+&lt;span class="c1"&gt;# -out ~/.ssh/publish-key -d&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;openssl aes-256-cbc -K $encrypted_120135e51708_key -iv $encrypted_120135e51708_iv -in publish-key.enc -out ~/.ssh/publish-key -d&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;chmod u=rw,og= ~/.ssh/publish-key&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;echo &amp;quot;Host github.com&amp;quot; &amp;gt;&amp;gt; ~/.ssh/config&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;echo &amp;quot;  IdentityFile ~/.ssh/publish-key&amp;quot; &amp;gt;&amp;gt; ~/.ssh/config&lt;/span&gt;
+&lt;span class="c1"&gt;# replace git@github.com:humrochagf/humrochagf.github.io.git&lt;/span&gt;
+&lt;span class="c1"&gt;# for the ssh access of your repository&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;git remote set-url origin git@github.com:arkag/arkag.github.io.git&lt;/span&gt;
+&lt;span class="c1"&gt;# If you are following the project page path change master:master&lt;/span&gt;
+&lt;span class="c1"&gt;# with gh-pages:gh-pages&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;git fetch origin -f master:master&lt;/span&gt;
+&lt;span class="nt"&gt;install&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;pip install --upgrade pip&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;pip install -r requirements.txt&lt;/span&gt;
+&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;make github&lt;/span&gt;
+&lt;span class="nt"&gt;after_script&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;git checkout master&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;echo &amp;quot;$CNAME_DOMAIN&amp;quot; &amp;gt; CNAME&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;git add CNAME&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;git commit -m &amp;quot;added CNAME&amp;quot;&lt;/span&gt;
+&lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;git push origin master&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Everything from before &lt;code&gt;after_script:&lt;/code&gt; is from Humberto's post linked in the &lt;a href="#references"&gt;references&lt;/a&gt; section. The &lt;code&gt;after_script&lt;/code&gt; section is what I use to ensure my CNAME persists across &lt;code&gt;ghp-import&lt;/code&gt; pushes because I use a custom domain like a cool kid. If you don't need it, scrap the whole section, otherwise set the &lt;code&gt;CNAME_DOMAIN&lt;/code&gt; in your Travis CI environment variables (Settings &amp;gt; Environment Variables).&lt;/p&gt;
+&lt;p&gt;Throw the above YAML into that file and commit both this and the encrypted SSL file to your repo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git add .
+git commit -m &lt;span class="s2"&gt;&amp;quot;travis files&amp;quot;&lt;/span&gt;
+git push origin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After that commit, your Travis CI pipeline should kick in and start building you site automatically!&lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;I hope you enjoyed reading through the set up of my website, and my first blog post. I expect most of what I post here will be pseudo-documentation for what I work on randomly in my personal time.&lt;/p&gt;
+&lt;p&gt;Thanks for stopping by!&lt;/p&gt;
+&lt;h2&gt;References&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://humberto.io/blog/publishing-at-github-pages-with-pelican-and-travis-ci/"&gt;Primary documentation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/nairobilug/pelican-alchemy"&gt;Pelican Alchemy&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.getpelican.com/en/stable/"&gt;Pelican documenation&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;</content><category term="DevOps"></category><category term="pelican"></category><category term="travis-ci"></category><category term="github-pages"></category></entry></feed>
