@@ -1,3 +1,11 @@
+Title: Github Pages, Travis CI, and Pelican
+Date: 2020-08-04 22:14
+Category: DevOps
+Tags: pelican, travis-ci, github-pages
+Slug: github-pages-and-pelican
+Authors: Alex Kagno
+Summary: How to use Travis CI to publish a Pelican site automatically to Github Pages
+
 ## Intro
 
 Much of this project is based off of Humberto's blog post linked in the [references](#references) below. Basically, I wanted a cheap(free) way of hosting a simple website for anything I might want to host. In addition to this, I wanted it to be at least mildly personalized website that wasn't one of the 5 avilable Github Pages themes. I prefer Python over Ruby anyway, and would like to get more experience with using it for things other than scripting, so here we are!
