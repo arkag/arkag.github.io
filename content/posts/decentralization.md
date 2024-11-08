@@ -73,3 +73,5 @@ A final warning: you should be wary of people who spout pretty buzz-words. It is
 2. [This is Financial Advice](https://youtu.be/5pYeoZaoWrA?si=SUM7R3_j35rasc2d)
 
 3. [The Future is a Dead Mall - Decentraland and the Metaverse](https://youtu.be/EiZhdpLXZ8Q?si=TknYWZt7uFb1JrPs)
+
+4. [Intro to Anarchism-- Q & Anarchy Episode 0](https://youtu.be/b9_wxEzA41o?si=IMSqo2ZQlppgynUN)
