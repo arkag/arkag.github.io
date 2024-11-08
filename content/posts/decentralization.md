@@ -17,7 +17,7 @@ hideComments = false
 
 I've been fascinated by the internet since I was a small child using my uncle's old ThinkPad and ruining the Windows installation by installing 400 different cursors (and at least that much malware).
 
-Slowly, as I grew up, I watched the internet change from a place where anything was possible to a place where that idea seems quaint and unlikely. This process seemingly happened all at once, but I believe that's partly to do with the idea that these websites that run our lives (Facebook, Twitter, Google) weren't originally walled gardens where data was hoarded. They were still taking that data, sure, but other's outside of the website could leverage that data as well for things like integrations or interoperability. People much more eloquent and experienced than me have been documenting and researching this phenomenon since the internet has existed, and I believe Cory Doctorow's term "enshittification" is an important aspect to this. However, there are new technologies being leveraged on the internet that can seem positive and improvements over the current internet, but will either never actually become a part of the internet in a meaningful way or are merely tools being used by those who want the centralization of power for themselves.
+Slowly, as I grew up, I watched the internet change from a place where anything was possible to a place where that idea seems quaint and unlikely. This process seemingly happened all at once, but I believe that's partly to do with the idea that these websites that run our lives (Facebook, Twitter, Google) weren't originally walled gardens where data was hoarded. They were still taking that data, sure, but other's outside of the website could leverage that data as well for things like integrations or interoperability. People much more eloquent and experienced than me have been documenting and researching this phenomenon since the internet has existed, and I believe Cory Doctorow's term "[enshittification](https://web.archive.org/web/20231030230634/https://doctorow.medium.com/social-quitting-1ce85b67b456)" is an important aspect to this. However, there are new technologies being leveraged on the internet that can seem positive and improvements over the current internet, but will either never actually become a part of the internet in a meaningful way or are merely tools being used by those who want the centralization of power for themselves.
 
 ### Different definitions
 
@@ -31,7 +31,7 @@ These two different types of decentralization can comingle as well, which become
 
 ### Wolves in decentralized clothing
 
-The idea I'd like to share regarding decentralized technology mimics a lot of "political theory"(Youtube essays I've watched or podcasts I've listened to; I'm not an academic) I'm aware of regarding how Anarchists treat Anarcho-Capitalists(AnComs) in their circles. AnComs are, according to Anarchists, a walking contradiction. 
+The idea I'd like to share regarding decentralized technology mimics a lot of "political theory" (Youtube essays I've watched or podcasts I've listened to; I'm not an academic) I'm aware of regarding how Anarchists treat Anarcho-Capitalists (AnComs) in their circles. AnComs are, according to Anarchists, a walking contradiction. 
 
 #### A tangent on the idea of Anarchy
 
