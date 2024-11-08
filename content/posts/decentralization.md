@@ -68,4 +68,8 @@ A final warning: you should be wary of people who spout pretty buzz-words. It is
 
 #### Watching
 
-#### Reading
+1. [Line Goes Up – The Problem With NFTs](https://youtu.be/YQ_xWvX1n9g?si=UqKMCTiCEo8qnD-X)
+
+2. [This is Financial Advice](https://youtu.be/5pYeoZaoWrA?si=SUM7R3_j35rasc2d)
+
+3. [The Future is a Dead Mall - Decentraland and the Metaverse](https://youtu.be/EiZhdpLXZ8Q?si=TknYWZt7uFb1JrPs)
