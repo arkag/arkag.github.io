@@ -17,7 +17,7 @@ showLanguageSelector = false
 fullWidthTheme = true
 
 # center theme with default width
-centerTheme = false
+centerTheme = true
 
 # if your resource directory contains an image called `cover.(jpg|png|webp)`,
 # then the file will be used as a cover automatically.
@@ -27,7 +27,7 @@ autoCover = true
 # set post to show the last updated
 # If you use git, you can set `enableGitInfo` to `true` and then post will automatically get the last updated
 enableGitInfo = true
-showLastUpdated = true
+showLastUpdated = false
 
 # Provide a string as a prefix for the last update date. By default, it looks like this: 2020-xx-xx [Updated: 2020-xx-xx] :: Author
 # updatedDatePrefix = "Updated"
@@ -55,7 +55,7 @@ title = "Alex's Blog"
 subtitle = "Shouting into the void"
 owner = "Alex Kagno"
 keywords = ""
-copyright = ""
+copyright = "CC BY-SA, FAL"
 menuMore = "Show more"
 readMore = "Read more"
 readOtherPosts = "Read other posts"
@@ -78,7 +78,7 @@ logoHomeLink = "/"
 [[languages.en.menu.main]]
 identifier = "resume"
 name = "Resume"
-url = "https://alex.kagno.com"
+url = "https://alex.kagno.com/resume"
 
 [module]
 [[module.imports]]
