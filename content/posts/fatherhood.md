@@ -28,6 +28,14 @@ These specifically made it very hard to actually decide one way another. Luckily
 
 ### <a name="trauma"></a> *The Trauma*
 
+I pretty regularly have a hard time reckoning with how bad my childhood *truly* was. Very often, I find myself hedging with the description using phrases like:
+
+1. I don't want to make it seem like my childhood was the worst ever.
+2. I know plenty of other people have gone through worse.
+3. It might have been bad, but it wasn't all bad.
+
+In fact, I wanted to start this section off with one of these, and I had to actively stop myself from doing that.
+
 ### <a name="adhd"></a> *The ADHD*
 
 ### <a name="birth"></a> *The Birth*
