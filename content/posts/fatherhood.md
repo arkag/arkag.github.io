@@ -60,6 +60,8 @@ Given this story was *told* to me, it's very possible I'm selectively rememberin
 4. having allergic asthma so bad that I routinely used a rescue inhaler along with Allegra-D daily because my parents didn't care enough to clean the house properly
 5. being parentified by my mother in order to care for the family and her emotional wellbeing
 
+These experiences, in large part, are why I was so afraid of having a child. Furthermore, with the amount of deprioritizing myself and emotional labor I performed as a child, I was very uncertain as to if *I* wanted kids, or if I wanted to fulfill my wife's desires. At this point, I can tell you very confidently that *I* wanted kids.
+
 [^9]: as of 11/20/2024
 [^10]: I absolutely recommend this book! Please check it out of your local library, or buy it from your local bookstore. If you want an audiobook, I'd recommend [Libro.fm](https://libro.fm/audiobooks/9781515977025?rf_code=lfm399790)(referral link)
 [^11]: foreshadowing: a literary device in which a writer gives an advance hint of what is to come later in the story
