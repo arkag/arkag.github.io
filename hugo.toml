@@ -41,6 +41,10 @@ logoHomeLink = "/"
 
 [languages.en.menu]
 [[languages.en.menu.main]]
+identifier = "home"
+name = "Home"
+url = "https://alex.kagno.com"
+[[languages.en.menu.main]]
 identifier = "resume"
 name = "Resume"
 url = "https://alex.kagno.com/resume"
