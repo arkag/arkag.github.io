@@ -1,6 +1,7 @@
 baseURL = 'https://blog.alex.kagno.com'
 languageCode = 'en-us'
 title = "Alex's Blog"
+enableEmoji = true
 
 [params]
 contentTypeName = "posts"
